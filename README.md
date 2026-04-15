@@ -19,5 +19,6 @@ Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Screen Shots
 
-[![Alt Text](image.png)](/public/d1.png)
-[![Alt Text](image.png)](/public/d1.png)
+<!-- ![Alt Text](https://raw.githubusercontent.com/WebdevAtanu/dev-diagram/main/public/d1.png) -->
+![Alt Text](https://raw.githubusercontent.com/WebdevAtanu/dev-diagram/main/public/d2.png)
+
