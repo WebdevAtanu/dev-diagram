@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <div className={`min-h-screen bg-slate-950 text-slate-200 ${inter.className} p-6 selection:bg-indigo-500/30`}>
 
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-7xl mx-auto">
         {/* HEADER */}
         <div className="text-center mb-8 pt-4">
           <h1 className={`${crimsonText.className} text-5xl font-bold bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400 tracking-tight`}>
