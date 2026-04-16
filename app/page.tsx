@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { Crimson_Text, Inter } from "next/font/google";
 import DiagramViewer from "@/components/DiagramViewer";
 
+// Fonts
 const crimsonText = Crimson_Text({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
@@ -50,20 +51,15 @@ export default function Home() {
 
 
   return (
-    <div className={`min-h-screen bg-[#020617] text-slate-200 ${inter.className} p-6 selection:bg-indigo-500/30`}>
-      {/* Subtle Background Glow */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] bg-indigo-500/10 blur-[120px] rounded-full" />
-        <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] bg-purple-500/10 blur-[120px] rounded-full" />
-      </div>
+    <div className={`min-h-screen bg-slate-950 text-slate-200 ${inter.className} p-6 selection:bg-indigo-500/30`}>
 
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-6xl mx-auto">
         {/* HEADER */}
-        <div className="text-center mb-6 pt-4">
+        <div className="text-center mb-8 pt-4">
           <h1 className={`${crimsonText.className} text-5xl font-bold bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400 tracking-tight`}>
             AI Flowchart Generator
           </h1>
-          <p className="text-slate-400 mt-4 text-lg font-light max-w-xl mx-auto">
+          <p className="text-slate-400 mt-2 font-light max-w-xl mx-auto">
             Transform abstract concepts into structured logic.
           </p>
         </div>
@@ -72,22 +68,28 @@ export default function Home() {
         <div className="grid lg:grid-cols-5 gap-8 items-start">
 
           {/* LEFT PANEL (Input) */}
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-4">
             <div className="bg-slate-900/50 backdrop-blur-xl rounded-2xl p-6 border border-slate-800 shadow-2xl">
-              <label className="block text-sm font-medium text-slate-400 mb-3 ml-1">
-                Project Description
-              </label>
+
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                placeholder="Describe your logic... (e.g. Stripe checkout flow, user onboarding auth)"
-                className="w-full h-56 p-4 rounded-xl bg-slate-950/50 border border-slate-700 text-slate-200 placeholder:text-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 transition-all resize-none shadow-inner"
+                placeholder="Describe your logic... (e.g. user authentication, payment processing, etc.)"
+                className="w-full h-56 p-4 rounded-xl bg-slate-950/50 border border-slate-700 text-slate-200 placeholder:text-slate-600 placeholder:italic placeholder:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/50 focus:border-indigo-500/50 transition-all resize-none shadow-inner"
+                onKeyDown={e => {
+                  if (e.key == "Enter")
+                    generateDiagram();
+                }}
               />
+
+              <div className="px-2 text-xs text-slate-500 leading-relaxed italic">
+                Tip: Be specific about user actions and system responses for better results.
+              </div>
 
               <button
                 onClick={generateDiagram}
                 disabled={loading}
-                className="w-full mt-6 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed text-white py-3.5 rounded-xl font-semibold transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] active:scale-[0.98]"
+                className="w-full mt-6 bg-indigo-600 hover:bg-indigo-700 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed text-white py-3.5 rounded-xl font-semibold transition-all shadow-[0_0_20px_rgba(79,70,229,0.3)] active:scale-[0.98]"
               >
                 {loading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -103,19 +105,15 @@ export default function Home() {
               </button>
 
               {error && (
-                <div className="mt-4 text-xs text-red-400 bg-red-950/30 border border-red-500/20 p-3 rounded-lg flex items-center gap-2">
+                <div className="mt-2 text-xs text-red-400 bg-red-950/30 border border-red-500/20 p-2 rounded-lg flex items-center gap-2">
                   <span className="h-1.5 w-1.5 rounded-full bg-red-500" />
                   {error}
                 </div>
               )}
             </div>
-
-            <div className="px-2 text-xs text-slate-500 leading-relaxed italic">
-              Tip: Be specific about user actions and system responses for better results.
-            </div>
           </div>
 
-          <div className="lg:col-span-3 bg-slate-900/40 backdrop-blur-xl rounded-2xl border border-slate-800 shadow-2xl overflow-hidden min-h-125 flex flex-col">
+          <div className="lg:col-span-3 bg-slate-900/40 backdrop-blur-xl rounded-2xl border border-slate-800 shadow-2xl overflow-hidden h-full flex flex-col">
             <DiagramViewer diagram={diagram} />
           </div>
         </div>
