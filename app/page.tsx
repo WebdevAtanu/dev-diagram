@@ -57,7 +57,7 @@ export default function Home() {
         {/* HEADER */}
         <div className="text-center mb-8 pt-4">
           <h1 className={`${crimsonText.className} text-5xl font-bold bg-clip-text text-transparent bg-linear-to-b from-white to-slate-400 tracking-tight`}>
-            AI Flowchart Generator
+            Dev Diagram
           </h1>
           <p className="text-slate-400 mt-2 font-light max-w-xl mx-auto">
             Transform abstract concepts into structured logic.
