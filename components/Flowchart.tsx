@@ -21,7 +21,7 @@ export default function Flowchart({ chart }: { chart: string }) {
           chart
         );
         ref.current!.innerHTML = svg;
-      } catch (err) {
+      } catch {
         ref.current!.innerHTML = "<p>Error rendering diagram</p>";
       }
     };

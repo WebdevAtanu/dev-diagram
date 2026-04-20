@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import ThemeProvider from "@/context/context";
 
 export const metadata: Metadata = {
   title: "Transform SQL to ER diagram",
@@ -13,7 +14,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className=''>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <ThemeProvider>
+        <body className="min-h-full flex flex-col">{children}</body>
+      </ThemeProvider>
     </html>
   );
 }
