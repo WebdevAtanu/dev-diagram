@@ -62,27 +62,28 @@ export default function Home() {
     >
       <div className="max-w-7xl mx-auto relative">
         {/* HEADER */}
-        <div className="text-center mb-6 pt-2 relative">
-          <h1
-            className={`${crimsonText.className} text-5xl font-bold bg-clip-text text-transparent tracking-tight ${isDark
-              ? "bg-linear-to-b from-white to-slate-400"
-              : "bg-linear-to-b from-slate-900 to-slate-500"
-              }`}
-          >
-            Dev Diagram
-          </h1>
+        <div className="flex justify-between items-start mb-6 pt-2">
+          <div className="">
+            <h1
+              className={`${crimsonText.className} text-3xl md:text-5xl font-bold bg-clip-text text-transparent tracking-tight ${isDark
+                ? "bg-linear-to-b from-white to-slate-400"
+                : "bg-linear-to-b from-slate-900 to-slate-500"
+                }`}
+            >
+              Dev Diagram
+            </h1>
 
-          <p
-            className={`mt-2 font-light max-w-xl mx-auto ${isDark ? "text-slate-400" : "text-slate-600"
-              }`}
-          >
-            Transform abstract concepts into structured logic.
-          </p>
-
+            <p
+              className={`mt-2 font-light max-w-xl mx-auto ${isDark ? "text-slate-400" : "text-slate-600"
+                }`}
+            >
+              Transform abstract concepts into structured logic.
+            </p>
+          </div>
           {/* TOGGLE BUTTON */}
           <button
             onClick={themeContext.toggleTheme}
-            className={`absolute top-0 right-0 p-2.5 rounded-full border transition-all duration-300 shadow-md backdrop-blur-md
+            className={`p-2.5 rounded-full border transition-all duration-300 shadow-md backdrop-blur-md
               ${isDark
                 ? "bg-slate-800/80 border-slate-700 text-yellow-300 hover:bg-slate-700 hover:shadow-[0_0_12px_rgba(250,204,21,0.4)]"
                 : "bg-white/80 border-slate-300 text-slate-700 hover:bg-slate-100 hover:shadow-[0_0_12px_rgba(99,102,241,0.3)]"
